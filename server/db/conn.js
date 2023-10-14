@@ -1,5 +1,18 @@
+
 const mongoose = require("mongoose");
+const username = "mansi";
+const password = "MAnsi@3101"; // Replace with your actual password
+const cluster = "cluster0";
+const database = "Amazonweb";
 
-const DB = process.env.MONGODB_URI
+// URL encode the password
+const encodedPassword = encodeURIComponent(password);
 
-mongoose.connect(DB).then(()=>console.log("data base connected")).catch((error)=>console.log("error"+ error.message))
+const DB = `mongodb+srv://${username}:${encodedPassword}@${cluster}.hov53sy.mongodb.net/${database}?retryWrites=true&w=majority`;
+
+mongoose.connect(DB, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+})
+.then(() => console.log("Connection is successfully done"))
+.catch(error => console.log("Error: " + error.message));

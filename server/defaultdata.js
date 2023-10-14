@@ -1,12 +1,14 @@
-const productdata = require("./constant/productsdata");
+const productsdata= require("./constant/productdata")
 const Products = require("./models/productsSchema");
 
 const DefaultData = async()=>{
     try {
         await Products.deleteMany({});
-        const storeData = await Products.insertMany(productdata);
+        const storeData = await Products.insertMany(productsdata);
         console.log(storeData);
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         console.log("error" + error.message);
     }
 };
