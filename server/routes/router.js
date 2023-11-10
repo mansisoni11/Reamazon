@@ -11,13 +11,15 @@ router.get("/getproducts",async(req,res)=>{
         console.log("error"+error.message);
     }
 });
+
+
 // get invidual data
 router.get("/getproductssone/:id", async (req, res) => {
     try {
         const { id } = req.params;
         console.log(id);
 
-        const individual = await Product.findOne({ id: id });
+        const individual = await Products.findOne({ id: id });
         console.log('Individual product found:', individual);
 
         res.status(200).json(individual);
